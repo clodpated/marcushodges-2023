@@ -1,5 +1,13 @@
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Domine } from 'next/font/google';
+
+// TODO, reuse
+const domine = Domine({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function Project({project}) {
   const description = documentToReactComponents(project.description);
@@ -8,14 +16,14 @@ export default function Project({project}) {
 
   return (
     <>
-      <dt>
-        <span>{project.title}</span>
+      <dt className='project-heading'>
+        <span className="flex-1 font-semibold before:content-['+_']">{project.title}</span>
         <span className="sr-only">&nbsp;|&nbsp;</span>
-        <span>{project.year}</span>
+        <span className='flex-none'>{project.year}</span>
       </dt>
-      <dd>
-        <div>{description}</div>
-        <div>
+      <dd className='overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100'>
+        <div className={`flex flex-col gap-[1em] ${domine.className} text-lg md:text-xl`}>{description}</div>
+        <div className='mt-[3em]'>
           {roles &&
             <div>
               <h3>Roles</h3>

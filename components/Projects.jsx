@@ -10,7 +10,7 @@ export default async function Projects() {
   return (
     <>
       <SectionHeading title={contentType.name} />
-      <dl>
+      <dl className="border-t border-neutral-900">
         {projects.items.map((item) => {
           return <Project key={item.sys.id} project={item.fields} />
         })}
