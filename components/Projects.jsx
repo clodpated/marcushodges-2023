@@ -1,7 +1,13 @@
+import SectionHeading from "./SectionHeading";
+import { getProjects } from '../lib/api';
 
+export default async function Projects() {
+  const projects = await getProjects();
+  console.log(projects.items)
 
-export default function Projects() {
   return (
-    <div>Projects</div>
+    <>
+      <SectionHeading title={projects.name} />
+    </>
   )
 }

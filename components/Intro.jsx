@@ -12,7 +12,7 @@ export default async function Intro({ data }) {
 
   return (
     <div
-      className={`intro ${domine.className} flex flex-col gap-5 text-xl md:text-[22px] leading-normal text-justify mx-auto px-[7vw] lg:px-0 lg:max-w-[830px]`}
+      className={`${domine.className} flex flex-col gap-5 text-xl md:text-[22px] leading-normal text-justify`}
     >
       {introHTML}
     </div>
