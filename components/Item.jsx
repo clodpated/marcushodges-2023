@@ -30,7 +30,8 @@ export default function Item({ item, model }) {
         >
           {description}
         </div>
-        <div className="mt-[3em]">
+
+        <div className="mt-[3em] md:flex md:gap-5">
           {item.roles && (
             <ItemMeta
               title={model.fields.filter((word) => word.id == 'roles')[0].name}
@@ -45,15 +46,16 @@ export default function Item({ item, model }) {
               metadata={item.toolsAndTech}
             />
           )}
-          {item.clients && (
+          {item.agency && (
             <ItemMeta
               title={
-                model.fields.filter((word) => word.id == 'clients')[0].name
+                model.fields.filter((word) => word.id == 'agency')[0].name
               }
-              metadata={item.clients}
+              metadata={item.agency}
             />
           )}
         </div>
+
         <div>
           {item.images.map((image) => {
             return (
