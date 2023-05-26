@@ -2,6 +2,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Domine } from 'next/font/google';
+import ItemMeta from './ItemMeta';
 
 // TODO, reuse
 const domine = Domine({
@@ -10,34 +11,48 @@ const domine = Domine({
   display: 'swap',
 });
 
-export default function Item({item}) {
+export default function Item({ item, model }) {
   const description = documentToReactComponents(item.description);
-  const roles = item.roles.length > 0 ? item.roles.join(", ") : null;
-  const tools = item.toolsAndTech.length > 0 ? item.toolsAndTech.join(", ") : null;
 
   return (
     <>
-      <dt className='item-heading'>
-        <span className="flex-1 font-semibold before:content-['+_']">{item.title}</span>
+      <dt className="item-heading">
+        <span className="flex-1 font-semibold before:content-['+_']">
+          {item.title}
+        </span>
         <span className="sr-only">&nbsp;|&nbsp;</span>
-        <span className='flex-none'>{item.year}</span>
+        <span className="flex-none">{item.year}</span>
       </dt>
-      <dd className='overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100'>
-        <div className={`flex flex-col gap-[1em] ${domine.className} text-lg md:text-xl`}>{description}</div>
-        <div className='mt-[3em]'>
-          {roles &&
-            <div>
-              <h3>Roles</h3>
-              <p>{roles}</p>
-            </div>
-          }
 
-          {tools &&
-            <div>
-              <h3>Tools and Tech</h3>
-              <p>{tools}</p>
-            </div>
-          }
+      <dd className="overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100">
+        <div
+          className={`item-description flex flex-col gap-[1em] ${domine.className} text-lg md:text-xl`}
+        >
+          {description}
+        </div>
+        <div className="mt-[3em]">
+          {item.roles && (
+            <ItemMeta
+              title={model.fields.filter((word) => word.id == 'roles')[0].name}
+              metadata={item.roles}
+            />
+          )}
+          {item.toolsAndTech && (
+            <ItemMeta
+              title={
+                model.fields.filter((word) => word.id == 'toolsAndTech')[0].name
+              }
+              metadata={item.toolsAndTech}
+            />
+          )}
+          {item.clients && (
+            <ItemMeta
+              title={
+                model.fields.filter((word) => word.id == 'clients')[0].name
+              }
+              metadata={item.clients}
+            />
+          )}
         </div>
         <div>
           {item.images.map((image) => {
@@ -56,7 +71,7 @@ export default function Item({item}) {
         </div>
       </dd>
     </>
-  )
+  );
 }
 
 Item.propTypes = {
