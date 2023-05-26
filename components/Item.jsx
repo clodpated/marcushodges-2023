@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Domine } from 'next/font/google';
 
@@ -57,3 +58,7 @@ export default function Item({item}) {
     </>
   )
 }
+
+Item.propTypes = {
+  item: PropTypes.object.isRequired,
+};

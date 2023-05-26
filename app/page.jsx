@@ -8,7 +8,7 @@ export default async function Home() {
   const metadata = await getMetadata();
   const projectsType = await getContentType('projects');
   const projects = await getEntries('projects');
-  console.log(projects)
+  // console.log(projects)
 
   return (
     <main className="flex min-h-screen flex-col text-neutral-900 text-xl leading-normal md:text-2xl pb-20">

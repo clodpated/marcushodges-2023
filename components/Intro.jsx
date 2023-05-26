@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Domine } from 'next/font/google';
 
@@ -18,3 +19,7 @@ export default async function Intro({ data }) {
     </div>
   );
 }
+
+Intro.PropTypes = {
+  data: PropTypes.object.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import SectionHeading from "./SectionHeading";
 import Item from "./Item";
 
@@ -14,3 +15,8 @@ export default function Items({title, items}) {
     </>
   )
 }
+
+Items.PropTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+};

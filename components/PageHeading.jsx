@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function PageHeading({ data }) {
   return (
     <h1 className="text-center uppercase leading-none my-8">
@@ -11,3 +13,7 @@ export default function PageHeading({ data }) {
     </h1>
   );
 }
+
+PageHeading.PropTypes = {
+  data: PropTypes.object.isRequired,
+};
