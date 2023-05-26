@@ -9,17 +9,17 @@ const domine = Domine({
   display: 'swap',
 });
 
-export default function Project({project}) {
-  const description = documentToReactComponents(project.description);
-  const roles = project.roles.length > 0 ? project.roles.join(", ") : null;
-  const tools = project.toolsAndTech.length > 0 ? project.toolsAndTech.join(", ") : null;
+export default function Item({item}) {
+  const description = documentToReactComponents(item.description);
+  const roles = item.roles.length > 0 ? item.roles.join(", ") : null;
+  const tools = item.toolsAndTech.length > 0 ? item.toolsAndTech.join(", ") : null;
 
   return (
     <>
-      <dt className='project-heading'>
-        <span className="flex-1 font-semibold before:content-['+_']">{project.title}</span>
+      <dt className='item-heading'>
+        <span className="flex-1 font-semibold before:content-['+_']">{item.title}</span>
         <span className="sr-only">&nbsp;|&nbsp;</span>
-        <span className='flex-none'>{project.year}</span>
+        <span className='flex-none'>{item.year}</span>
       </dt>
       <dd className='overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100'>
         <div className={`flex flex-col gap-[1em] ${domine.className} text-lg md:text-xl`}>{description}</div>
@@ -39,7 +39,7 @@ export default function Project({project}) {
           }
         </div>
         <div>
-          {project.images.map((image) => {
+          {item.images.map((image) => {
             return (
               <figure key={image.sys.id}>
                 <figcaption>{image.fields.title}</figcaption>
