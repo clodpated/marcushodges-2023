@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Domine } from 'next/font/google';
 import ItemMeta from './ItemMeta';
@@ -14,17 +18,33 @@ const domine = Domine({
 export default function Item({ item, model }) {
   const description = documentToReactComponents(item.description);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <>
-      <dt className="item-heading">
-        <span className="flex-1 font-semibold before:content-['+_']">
+      <dt className="item-heading" onClick={toggleOpen}>
+        <span
+          className={classNames(
+            'flex-1 font-semibold',
+            isOpen ? "before:content-['-_']" : "before:content-['+_']"
+          )}
+        >
           {item.title}
         </span>
         <span className="sr-only">&nbsp;|&nbsp;</span>
         <span className="flex-none">{item.year}</span>
       </dt>
 
-      <dd className="overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100">
+      <dd
+        className={classNames(
+          'overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100',
+          !isOpen && 'sr-only'
+        )}
+      >
         <div
           className={`item-description flex flex-col gap-[1em] ${domine.className} text-lg md:text-xl`}
         >
@@ -48,9 +68,7 @@ export default function Item({ item, model }) {
           )}
           {item.agency && (
             <ItemMeta
-              title={
-                model.fields.filter((word) => word.id == 'agency')[0].name
-              }
+              title={model.fields.filter((word) => word.id == 'agency')[0].name}
               metadata={item.agency}
             />
           )}
