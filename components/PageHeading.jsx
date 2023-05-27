@@ -14,6 +14,6 @@ export default function PageHeading({ data }) {
   );
 }
 
-PageHeading.PropTypes = {
+PageHeading.propTypes = {
   data: PropTypes.object.isRequired,
 };
