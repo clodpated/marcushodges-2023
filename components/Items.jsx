@@ -7,7 +7,7 @@ export default function Items({ model, items }) {
     <>
       <SectionHeading title={model.description} />
       <dl className="border-t border-neutral-900">
-        {items.items.map((item) => {
+        {items.map((item) => {
           return <Item key={item.sys.id} item={item.fields} model={model} />;
         })}
       </dl>
