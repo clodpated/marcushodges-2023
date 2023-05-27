@@ -26,7 +26,10 @@ export default function Item({ item, model }) {
 
   return (
     <>
-      <dt className="item-heading" onClick={toggleOpen}>
+      <dt
+        className={classNames('item-heading', isOpen && 'before:scale-y-100')}
+        onClick={toggleOpen}
+      >
         <span
           className={classNames(
             'flex-1 font-semibold',
@@ -41,8 +44,8 @@ export default function Item({ item, model }) {
 
       <dd
         className={classNames(
-          'overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100',
-          !isOpen && 'sr-only'
+          'sr-only overflow-hidden py-[1em] px-[7vw] lg:px-[1em] bg-green-100 opacity-0 transition-opacity duration-500 border-b border-neutral-900',
+          isOpen && 'not-sr-only opacity-100'
         )}
       >
         <div
@@ -74,11 +77,16 @@ export default function Item({ item, model }) {
           )}
         </div>
 
-        <div>
+        <div className="text-center">
           {item.images.map((image) => {
             return (
-              <figure key={image.sys.id}>
-                <figcaption>{image.fields.title}</figcaption>
+              <figure
+                key={image.sys.id}
+                className="bg-green-300 shadow-lg inline-block mb-[1em] px-3 pb-3"
+              >
+                <figcaption className="text-base font-semibold leading-5 py-4 text-left uppercase">
+                  {image.fields.title}
+                </figcaption>
                 <Image
                   src={`https:${image.fields.file.url}`}
                   alt={image.fields.description}
