@@ -1,8 +1,8 @@
 import PageHeading from '@/components/PageHeading';
 import Intro from '@/components/Intro';
 import Items from '@/components/Items';
-
-import { getEntry, getModel } from '../lib/api';
+import Footer from '@/components/Footer';
+import { getEntry, getModel } from '@/lib/api';
 
 export default async function Home() {
   const metadata = await getEntry('MK6HbkvA4DUvFAHTggQiX');
@@ -19,6 +19,7 @@ export default async function Home() {
         <Intro data={metadata.fields.intro} />
         <Items model={projectsModel} items={sortedProjects.fields.itemOrder} />
         <Items model={jobsModel} items={sortedJobs.fields.itemOrder} />
+        <Footer data={metadata.fields} />
       </div>
     </main>
   );
