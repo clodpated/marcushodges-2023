@@ -2,18 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Develop locally
 ```bash
 npm run dev
-```
-
-Build Locally
-```bash
 npm run build
-```
-
-Serve locally
-```bash
 npm run serve
 ```
 

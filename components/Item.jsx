@@ -55,6 +55,12 @@ export default function Item({ item, model }) {
         </div>
 
         <div className="mt-[3em] md:flex md:gap-5">
+          {item.agency && (
+            <ItemMeta
+              title={model.fields.filter((word) => word.id == 'agency')[0].name}
+              metadata={item.agency}
+            />
+          )}
           {item.roles && (
             <ItemMeta
               title={model.fields.filter((word) => word.id == 'roles')[0].name}
@@ -69,34 +75,36 @@ export default function Item({ item, model }) {
               metadata={item.toolsAndTech}
             />
           )}
-          {item.agency && (
+          {item.clients && (
             <ItemMeta
-              title={model.fields.filter((word) => word.id == 'agency')[0].name}
-              metadata={item.agency}
+              title={model.fields.filter((word) => word.id == 'clients')[0].name}
+              metadata={item.clients}
             />
           )}
         </div>
 
-        <div className="text-center">
-          {item.images.map((image) => {
-            return (
-              <figure
-                key={image.sys.id}
-                className="bg-green-300 shadow-lg inline-block mb-[1em] px-3 pb-3"
-              >
-                <figcaption className="text-base font-semibold leading-5 py-4 text-left uppercase">
-                  {image.fields.title}
-                </figcaption>
-                <Image
-                  src={`https:${image.fields.file.url}`}
-                  alt={image.fields.description}
-                  width={image.fields.file.details.image.width}
-                  height={image.fields.file.details.image.height}
-                />
-              </figure>
-            );
-          })}
-        </div>
+        {item.images && (
+          <div className="text-center">
+            {item.images.map((image) => {
+              return (
+                <figure
+                  key={image.sys.id}
+                  className="bg-green-300 shadow-lg inline-block mb-[1em] px-3 pb-3"
+                >
+                  <figcaption className="text-base font-semibold leading-5 py-4 text-left uppercase">
+                    {image.fields.title}
+                  </figcaption>
+                  <Image
+                    src={`https:${image.fields.file.url}`}
+                    alt={image.fields.description}
+                    width={image.fields.file.details.image.width}
+                    height={image.fields.file.details.image.height}
+                  />
+                </figure>
+              );
+            })}
+          </div>
+        )}
       </dd>
     </>
   );
