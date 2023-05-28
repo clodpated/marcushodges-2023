@@ -15,7 +15,7 @@ export default function Items({ model, items }) {
   );
 }
 
-Items.PropTypes = {
+Items.propTypes = {
   model: PropTypes.object.isRequired,
   items: PropTypes.array.isRequired,
 };

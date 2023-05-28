@@ -20,6 +20,6 @@ export default async function Intro({ data }) {
   );
 }
 
-Intro.PropTypes = {
+Intro.propTypes = {
   data: PropTypes.object.isRequired,
 };

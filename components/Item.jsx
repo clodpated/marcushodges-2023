@@ -77,7 +77,9 @@ export default function Item({ item, model }) {
           )}
           {item.clients && (
             <ItemMeta
-              title={model.fields.filter((word) => word.id == 'clients')[0].name}
+              title={
+                model.fields.filter((word) => word.id == 'clients')[0].name
+              }
               metadata={item.clients}
             />
           )}

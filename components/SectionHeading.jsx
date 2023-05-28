@@ -8,6 +8,6 @@ export default function SectionHeading({ title }) {
   );
 }
 
-SectionHeading.PropTypes = {
+SectionHeading.propTypes = {
   title: PropTypes.string.isRequired,
 };
