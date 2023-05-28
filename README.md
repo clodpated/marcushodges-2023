@@ -9,12 +9,12 @@ npm run dev
 
 Build Locally
 ```bash
-npm run dev
+npm run build
 ```
 
 Serve locally
 ```bash
-npm run dev
+npm run serve
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
