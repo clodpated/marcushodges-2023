@@ -6,7 +6,7 @@ export default function Items({ model, items }) {
   return (
     <>
       <SectionHeading title={model.description} />
-      <dl className="border-t border-neutral-900 lg:mx-auto lg:max-w-[850px]">
+      <dl className="border-t border-neutral-900 w-full lg:mx-auto lg:max-w-[850px]">
         {items.map((item) => {
           return <Item key={item.sys.id} item={item.fields} model={model} />;
         })}
