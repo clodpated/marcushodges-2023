@@ -27,7 +27,10 @@ export default function Item({ item, model }) {
   return (
     <>
       <dt
-        className={classNames('item-heading', isOpen && 'before:scale-y-100')}
+        className={classNames(
+          'item-heading  px-[7vw] lg:px-[1em]',
+          isOpen && 'before:scale-y-100'
+        )}
         onClick={toggleOpen}
       >
         <span
