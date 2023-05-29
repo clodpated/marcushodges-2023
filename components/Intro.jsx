@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Domine } from 'next/font/google';
-
-const domine = Domine({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
+import { domine } from '@/lib/fonts';
 
 export default async function Intro({ data }) {
   const introHTML = documentToReactComponents(data);

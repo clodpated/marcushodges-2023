@@ -1,12 +1,6 @@
 import Script from 'next/script';
-import { Raleway } from 'next/font/google';
+import { raleway } from '@/lib/fonts';
 import './globals.css';
-
-const raleway = Raleway({
-  weight: ['400', '600', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export const metadata = {
   title: 'Marcus Hodges - Maker of web things',

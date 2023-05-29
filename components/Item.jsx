@@ -5,15 +5,8 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Domine } from 'next/font/google';
+import { domine } from '@/lib/fonts';
 import ItemMeta from './ItemMeta';
-
-// TODO, reuse
-const domine = Domine({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export default function Item({ item, model }) {
   const description = documentToReactComponents(item.description);
