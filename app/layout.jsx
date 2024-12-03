@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { raleway } from '@/lib/fonts';
 import './globals.css';
 
@@ -31,7 +32,10 @@ export default function RootLayout({ children }) {
         }}
       />
 
-      <body className={`${raleway.className} antialiased`}>{children}</body>
+      <body className={`${raleway.className} antialiased`}>
+        {children}
+        <SpeedInsights />  
+      </body>
     </html>
   );
 }
